@@ -1,0 +1,22 @@
+{
+  "name": "SpendWise",
+  "short_name": "SpendWise",
+  "description": "Управление финансами с интервальными транзакциями",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "/sw-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/sw-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

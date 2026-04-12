@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ОСНОВНАЯ ИКОНКА ДЛЯ ВКЛАДКИ -->
+    <link rel="icon" type="image/png" href="/sw-icon.png">
+    
+    <!-- ДОПОЛНИТЕЛЬНЫЕ РАЗМЕРЫ ДЛЯ РАЗНЫХ УСТРОЙСТВ -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/sw-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/sw-icon.png">
+    
+    <!-- ДЛЯ APPLE УСТРОЙСТВ -->
+    <link rel="apple-touch-icon" href="/sw-icon.png">
+    
+    <!-- ДЛЯ PWA (PROGRESSIVE WEB APP) -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563EB">
+    
+    <title>SpendWise</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
