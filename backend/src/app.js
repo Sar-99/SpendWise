@@ -16,7 +16,7 @@ const activeTaskRoutes = require('./routes/active-task.routes');
 const iterationRoutes = require('./routes/iteration.routes');
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://192.168.1.4:5173'],
+  origin: ['http://localhost:5173', 'https://spendwise-backend-20ce.onrender.com', 'https://spendwise-v0.netlify.app'],
   credentials: true
 }));
 

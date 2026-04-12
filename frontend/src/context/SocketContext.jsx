@@ -12,11 +12,18 @@ export const useSocket = () => {
     return context;
 };
 
-// Динамическое определение URL сокета (тот же хост, что и фронтенд)
+// Получаем URL сокета из переменной окружения
 const getSocketURL = () => {
+    // VITE_API_URL имеет вид https://spendwise-backend-20ce.onrender.com/api
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (apiUrl) {
+        // Убираем /api и заменяем https:// на wss://
+        let baseUrl = apiUrl.replace(/\/api$/, '').replace(/^https/, 'wss');
+        return baseUrl;
+    }
+    // fallback для разработки
     const hostname = window.location.hostname;
-    // Порт бэкенда – 3001 (можно вынести в .env)
-    return `http://${hostname}:3001`;
+    return `ws://${hostname}:3001`;
 };
 
 export const SocketProvider = ({ children }) => {
@@ -41,15 +48,13 @@ export const SocketProvider = ({ children }) => {
             transports: ['websocket', 'polling'],
             reconnectionAttempts: 5,
             reconnectionDelay: 1000,
+            // Добавляем опцию secure для wss
+            secure: socketUrl.startsWith('wss')
         });
 
         newSocket.on('connect', () => console.log('✅ Socket connected'));
         newSocket.on('connect_error', (err) => {
             console.error('❌ Socket connection error:', err.message);
-            // При ошибке websocket переключаемся на polling
-            if (newSocket.io.opts.transports[0] === 'websocket') {
-                newSocket.io.opts.transports = ['polling'];
-            }
         });
         newSocket.on('disconnect', (reason) => console.log('🔌 Socket disconnected:', reason));
 

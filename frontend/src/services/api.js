@@ -1,4 +1,4 @@
-const API_URL = 'http://192.168.1.4:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 const api = {
   async request(endpoint, options = {}) {
